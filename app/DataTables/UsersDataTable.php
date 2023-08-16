@@ -34,11 +34,7 @@ class UsersDataTable extends DataTable
                 return $image;
               })
             ->addColumn('status', function($row){
-                // if($row->status === 1){
                     $status = '<div class="form-check form-switch form-switch-xl"><input data-id="' . $row->userId . '" class="toggle-class form-check-input" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive"' . ($row->status ? ' checked' : '') . '></div>';
-                // }else{
-                //     $status = '<input class="form-check-input" id="flexSwitchCheckDefaultXl" type="checkbox">';
-                // }
                 return $status;
                 })
             ->setRowId('id')

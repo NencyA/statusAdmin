@@ -9,10 +9,9 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    //
     public function dashboard() {
-        $data['users'] = User::count();
-        $data['video'] = Video::count();
+        $data['users'] = User::latest()->count();
+        $data['video'] = Video::latest()->count();
         return view('dashboard',$data);
     }
 }

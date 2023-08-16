@@ -10,7 +10,7 @@
                 <li class="breadcrumb-item">
                    <span>Home</span>
                 </li>
-                <li class="breadcrumb-item active"><span>Dashboard</span></li>
+                <li class="breadcrumb-item active"><span>Settings</span></li>
                 <a href="#" class="btn btn-dark position-absolute mb-auto"  data-toggle="modal" data-target="#adminForm" style="right: 30px; bottom: 5px ">Change Password</a>
              </ol>
           </nav>

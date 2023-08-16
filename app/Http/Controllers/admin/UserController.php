@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\DataTables\ReportedUserDataTable;
 use App\DataTables\UsersDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -34,6 +35,8 @@ class UserController extends Controller
 
         $request->photo->move(public_path('images'), $image);
         $imageName = public_path('images').$image;
+
+        $user = $request->all();
         $user['name'] = $request->name;
         $user['password'] = bcrypt($request->password);
         $user['emailId'] = $request->emailId;
@@ -44,8 +47,10 @@ class UserController extends Controller
         $user['flowing'] = 0;
         $user['postbyuser'] = 0;
         $user['profilePicLink'] = $imageName;
+
         $data = new User();
         $data->fill($user)->save();
+
         if ($data) {
             $response['status'] = true;
             $response['message'] = 'User added Successfully';
@@ -57,7 +62,9 @@ class UserController extends Controller
         }
      }
      public function userEdit(Request $request){
+
         $userData = User::select('*')->where('userId',$request->id)->first();
+
         $language = explode(",",$userData->language);
         if ($userData) {
             $response['status'] = true;
@@ -137,5 +144,8 @@ class UserController extends Controller
         return response()->json([
             'success' => 'Record deleted successfully!'
         ]);
+    }
+    public function reportedUser(ReportedUserDataTable $dataTable ){
+        return $dataTable->render('user.report-user');
     }
 }

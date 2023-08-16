@@ -31,7 +31,8 @@ class User extends Authenticatable
         'flowing',
         'postbyuser',
         'rendom',
-        'status'
+        'status',
+        'is_verified',
     ];
 
     /**

@@ -41,6 +41,7 @@ class AuthController extends Controller
         $data['adminData'] = Admin::select('*')->first();
         return view('settings.settings',$data);
      }
+     
      public function changePassword(Request $request){
         $validator = Validator::make($request->all(), [
             'newpwd' => 'required|min:6|required_with:conpwd|same:conpwd',
@@ -94,10 +95,10 @@ class AuthController extends Controller
      public function submitResetPasswordForm(Request $request)
       {
           $validator = Validator::make($request->all(), [
-            'email' => 'required|email|exists:admin',
-              'password' => 'min:6|required_with:conpassword|same:conpassword',
-              'conpassword' => 'required'
-        ]);
+                'email' => 'required|email|exists:admin',
+                'password' => 'min:6|required_with:conpassword|same:conpassword',
+                'conpassword' => 'required'
+            ]);
 
             if ($validator->fails()) {
                 $error = $validator->errors()->first();

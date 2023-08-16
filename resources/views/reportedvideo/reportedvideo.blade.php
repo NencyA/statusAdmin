@@ -10,7 +10,7 @@
                 <li class="breadcrumb-item">
                    <span>Home</span>
                 </li>
-                <li class="breadcrumb-item active"><span>Dashboard</span></li>
+                <li class="breadcrumb-item active"><span>Reported-Video</span></li>
              </ol>
           </nav>
        </div>
@@ -70,7 +70,10 @@
 @section('js')
 {!! $dataTable->scripts() !!}
 <script>
-
+$(document).ready(function() {
+        $('#reportedvideo-table thead').addClass('table-light');
+        $('#reportedvideo-table').addClass('table border mb-0');
+    });
     $(document).on("click",".videobtn",function(e) {
         e.preventDefault();
         let id = $(this).attr('id');
